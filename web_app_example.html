@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tampere Firefly</title>
+</head>
+<body>
+
+<div id="webapp">
+    <h2 id="sent"></h2>
+    <button type="button" onclick="sendSocket('Here we go!')">MOAR LIGHT!</button>
+</div>
+
+<script>
+
+function sendAJAX() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("sent").innerHTML = "Request sent!";
+        }
+    };
+    xhttp.open("GET", "localhost", true);
+    xhttp.send();
+}
+
+function sendSocket(data) {
+    var mySocket = new WebSocket("ws://127.0.0.1:8888");
+    /*var i = 0;
+    while (mySocket.readyState != 1) {
+        if (i % 1000 == 0) {
+            console.log(mySocket.readyState);
+        }
+        i = i+1;
+    }*/
+    mySocket.addEventListener('close', function(event) {
+        console.log("Closed for reason ", event.reason);
+    })
+    mySocket.addEventListener('open', function(event) {
+        mySocket.send(data);
+    })
+}
+
+</script>
+
+</body>
+</html>
