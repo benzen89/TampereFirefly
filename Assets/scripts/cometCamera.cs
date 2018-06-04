@@ -18,7 +18,7 @@ public class cometCamera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown(0)){
+		if (Input.GetMouseButtonDown(1)){
 			checkDoubleClick();
 		}
 		cancelDoubleClick();
@@ -57,7 +57,7 @@ public class cometCamera : MonoBehaviour {
 		float zoomDelta;
 		zoomDelta = Input.GetAxis("Mouse ScrollWheel") * 50;
 		float posZ;
-		posZ = Mathf.Clamp(mainCam.transform.localPosition.z + zoomDelta, -500, 0);
+		posZ = Mathf.Clamp(mainCam.transform.localPosition.z + zoomDelta, -1000, 0);
 
 		mainCam.transform.localPosition = new Vector3(0, 0, posZ);
 	}
@@ -79,7 +79,7 @@ public class cometCamera : MonoBehaviour {
 			//get target position
 			getTargetPosition();
 			clicked = true;
-			doubleClickTimer = 1.0f;
+			doubleClickTimer = 0.25f;
 		}
 	}
 
