@@ -8,6 +8,8 @@ using System;
 
 public class TransportServer : MonoBehaviour {
 
+	public GameObject lpManager;
+
 	void Awake() 
 	{
 		Environment.SetEnvironmentVariable("MONO_REFLECTION_SERIALIZER", "yes");
@@ -20,7 +22,7 @@ public class TransportServer : MonoBehaviour {
 		ConnectionConfig config = new ConnectionConfig ();
 		int channelId = config.AddChannel (QosType.Unreliable);
 
-		HostTopology topology = new HostTopology (config, 10);
+		HostTopology topology = new HostTopology (config, 100);
 
 		int hostId = NetworkTransport.AddWebsocketHost (topology, 8888, "127.0.0.1");
 		Debug.Log ("Websocket configured. Host id is " + hostId);
@@ -56,6 +58,11 @@ public class TransportServer : MonoBehaviour {
 			//string message = formatter.Deserialize(stream) as string;
 			string message = System.Text.Encoding.Default.GetString(recBuffer);
 			Debug.Log("incoming message event received: " + message);
+
+			GameObject[] pylons = GameObject.FindGameObjectsWithTag("pylon");
+			int randomI = UnityEngine.Random.Range(0, pylons.Length);
+			lpManager.GetComponent<lightPylonManager>().RaiseSinglePylon(pylons[randomI]);
+
 			break;
 		case NetworkEventType.DisconnectEvent:
 			Debug.Log("remote client event disconnected");
