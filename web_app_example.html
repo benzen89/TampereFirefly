@@ -2,12 +2,13 @@
 <html>
 <head>
 <title>Tampere Firefly</title>
+<link rel="stylesheet" href="buttons.css" type="text/css" media="all" />
 </head>
 <body>
 
 <div id="webapp">
     <h2 id="sent"></h2>
-    <button type="button" onclick="sendSocket('Here we go!')">MOAR LIGHT!</button>
+    <button type="button" class="blue" onclick="sendSocket('Here we go!')">MOAR LIGHT!</button>
 </div>
 
 <script>
@@ -25,13 +26,6 @@ function sendAJAX() {
 
 function sendSocket(data) {
     var mySocket = new WebSocket("ws://127.0.0.1:8888");
-    /*var i = 0;
-    while (mySocket.readyState != 1) {
-        if (i % 1000 == 0) {
-            console.log(mySocket.readyState);
-        }
-        i = i+1;
-    }*/
     mySocket.addEventListener('close', function(event) {
         console.log("Closed for reason ", event.reason);
     })
