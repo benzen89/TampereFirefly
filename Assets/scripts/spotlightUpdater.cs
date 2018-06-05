@@ -28,7 +28,7 @@ public class spotlightUpdater : MonoBehaviour {
 				//set new closest distance
 				closestDistance = myDistance;
 				closestPylon = pylons[i];
-				Debug.Log("found closer pylon");
+				//Debug.Log("found closer pylon");
 			} else if(myDistance < secondClosestDistance){
 				//second steps one down
 				thirdClosestDistance = secondClosestDistance;
