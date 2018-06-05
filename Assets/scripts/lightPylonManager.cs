@@ -32,8 +32,8 @@ public class lightPylonManager : MonoBehaviour {
 	public void RaiseSinglePylon(GameObject pylon){
 		float raiseBy = 10;
 		float lowerBy = raiseBy / (pylons.Count - 1);
-		Debug.Log("valopylväs: " + valopylväs.transform.localScale.y.ToString());
-		Debug.Log("pylon: " + pylon.transform.localScale.y.ToString());
+		//Debug.Log("valopylväs: " + valopylväs.transform.localScale.y.ToString());
+		//Debug.Log("pylon: " + pylon.transform.localScale.y.ToString());
 		if (pylon.transform.localScale.y < 100 - raiseBy){
 			//raise pylon & update % text
 			pylon.transform.localScale = new Vector3(pylon.transform.localScale.x, pylon.transform.localScale.y + raiseBy, pylon.transform.localScale.z);
