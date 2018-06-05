@@ -3,12 +3,13 @@
 <head>
 <title>Tampere Firefly</title>
 <link rel="stylesheet" href="buttons.css" type="text/css" media="all" />
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
 </head>
 <body>
 
-<div id="webapp">
-    <h2 id="sent"></h2>
-    <button type="button" class="blue" onclick="sendSocket('Here we go!')">MOAR LIGHT!</button>
+<div id="webapp" class="container">
+    <h2 style="font-family: 'Arial';" id="sent">Paina tästä pyytääksesi katuvalaisujärjestelmää valaisemaan tiesi tulevaisuuteen.</h2>
+    <button type="button" class="pulse-button" onclick="sendSocket('Here we go!')">VALOA</button>
 </div>
 
 <script>
